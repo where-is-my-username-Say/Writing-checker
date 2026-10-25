@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Writing Review</title>
+<style>
+:root{--bg:#eceae4;--page:#fff;--fg:#1a1a1a;--mut:#666;--bd:#d6d3ca;--ink:#1f3a5f;--inkfg:#fff;--g:#b45309;--m:#1d4ed8;--s:#7e22ce;--st:#15803d;--t:#c00000}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1116;--page:#161a22;--fg:#e8eaf0;--mut:#98a0b0;--bd:#2a303c;--ink:#8fb4ff;--inkfg:#0e1116;--g:#f0a050;--m:#7ba5ff;--s:#c49bf0;--st:#6fd08c;--t:#ff6b6b}}
+:root[data-theme="dark"]{--bg:#0e1116;--page:#161a22;--fg:#e8eaf0;--mut:#98a0b0;--bd:#2a303c;--ink:#8fb4ff;--inkfg:#0e1116;--g:#f0a050;--m:#7ba5ff;--s:#c49bf0;--st:#6fd08c;--t:#ff6b6b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.top{background:var(--page);border-bottom:1px solid var(--bd);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.top b{font-size:1rem;letter-spacing:.02em}
+main{max-width:1000px;margin:0 auto;padding:16px}
+.panel{background:var(--page);border:1px solid var(--bd);padding:16px;margin-bottom:14px}
+h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:0 0 8px;font-weight:600}
+label.f{display:block;font-size:.8rem;color:var(--mut);margin:8px 0 3px}
+input,select,textarea{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--bd);border-radius:2px;background:var(--page);color:var(--fg)}
+textarea{min-height:260px;resize:vertical;font:17px/1.7 Georgia,"Times New Roman",serif}
+a{color:var(--ink)}
+.two{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+button,label.b{font:inherit;padding:8px 14px;border:1px solid var(--bd);border-radius:2px;background:var(--page);color:var(--fg);cursor:pointer}
+button.p{background:var(--ink);color:var(--inkfg);border-color:var(--ink);font-weight:600}
+button.link{border:0;background:none;color:var(--ink);padding:4px 8px;text-decoration:underline}
+button:disabled{opacity:.5;cursor:default}
+#status{margin:0 0 12px;color:var(--mut);min-height:1.4em}#status.err{color:var(--t)}
+#photoBox img{width:100%;max-height:340px;object-fit:contain;border:1px solid var(--bd);background:var(--bg)}
+.layout{display:grid;gap:14px;grid-template-columns:1fr 340px;align-items:start}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+#out{white-space:pre-wrap;word-break:break-word;font:17px/2 Georgia,"Times New Roman",serif}
+mark{background:none;color:inherit;cursor:pointer;text-decoration:underline wavy;text-decoration-thickness:1.5px;text-underline-offset:4px}
+mark.grammar{text-decoration-color:var(--g)}mark.mechanics{text-decoration-color:var(--m)}
+mark.spelling{text-decoration-color:var(--s)}mark.style{text-decoration-color:var(--st)}
+mark.teacher{color:var(--t);text-decoration:underline solid var(--t)}
+.tabs{display:flex;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--bd);margin-bottom:10px;padding-bottom:6px;font-size:.88rem}
+.tabs button{border:0;background:none;padding:0;color:var(--mut)}.tabs button.on{color:var(--fg);font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.iss{border:1px solid var(--bd);border-left:4px solid var(--bd);padding:8px 10px;margin-bottom:8px;background:var(--page)}
+.iss.grammar{border-left-color:var(--g)}.iss.mechanics{border-left-color:var(--m)}.iss.spelling{border-left-color:var(--s)}.iss.style{border-left-color:var(--st)}.iss.teacher{border-left-color:var(--t)}
+.iss.flash{outline:2px solid var(--ink)}
+.tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}.iss.teacher .tag{color:var(--t);font-weight:700}
+.bad{text-decoration:line-through;color:var(--mut)}.good{font-weight:700}
+#fixed{white-space:pre-wrap;font:17px/1.7 Georgia,serif}
+#cammodal{position:fixed;inset:0;background:#000e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:9;padding:12px;color:#fff}
+#cammodal[hidden]{display:none}#vid{max-width:100%;max-height:78vh;background:#000}
+</style><style>
+.theme-switch{--toggle-size:30px;--container-width:5.625em;--container-height:2.5em;--container-radius:6.25em;--container-light-bg:#3D7EAE;--container-night-bg:#1D1F2C;--circle-container-diameter:3.375em;--sun-moon-diameter:2.125em;--sun-bg:#ECCA2F;--moon-bg:#C4C9D1;--spot-color:#959DB1;--circle-container-offset:calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);--stars-color:#fff;--clouds-color:#F3FDFF;--back-clouds-color:#AACADF;--transition:.5s cubic-bezier(0,-0.02,0.4,1.25);--circle-transition:.3s cubic-bezier(0,-0.02,0.35,1.17)}
+.theme-switch,.theme-switch *,.theme-switch *::before,.theme-switch *::after{box-sizing:border-box;margin:0;padding:0;font-size:var(--toggle-size)}
+.theme-switch__container{width:var(--container-width);height:var(--container-height);background-color:var(--container-light-bg);border-radius:var(--container-radius);overflow:hidden;cursor:pointer;box-shadow:0em -0.062em 0.062em rgba(0,0,0,0.25),0em 0.062em 0.125em rgba(255,255,255,0.94);transition:var(--transition);position:relative}
+.theme-switch__container::before{content:"";position:absolute;z-index:1;inset:0;box-shadow:0em 0.05em 0.187em rgba(0,0,0,0.25) inset,0em 0.05em 0.187em rgba(0,0,0,0.25) inset;border-radius:var(--container-radius)}
+.theme-switch__checkbox{display:none}
+.theme-switch__circle-container{width:var(--circle-container-diameter);height:var(--circle-container-diameter);background-color:rgba(255,255,255,0.1);position:absolute;left:var(--circle-container-offset);top:var(--circle-container-offset);border-radius:var(--container-radius);box-shadow:inset 0 0 0 3.375em rgba(255,255,255,0.1),inset 0 0 0 3.375em rgba(255,255,255,0.1),0 0 0 0.625em rgba(255,255,255,0.1),0 0 0 1.25em rgba(255,255,255,0.1);display:flex;transition:var(--circle-transition);pointer-events:none}
+.theme-switch__sun-moon-container{pointer-events:auto;position:relative;z-index:2;width:var(--sun-moon-diameter);height:var(--sun-moon-diameter);margin:auto;border-radius:var(--container-radius);background-color:var(--sun-bg);box-shadow:0.062em 0.062em 0.062em 0em rgba(254,255,239,0.61) inset,0em -0.062em 0.062em 0em #a1872a inset;filter:drop-shadow(0.062em 0.125em 0.125em rgba(0,0,0,0.25)) drop-shadow(0em 0.062em 0.125em rgba(0,0,0,0.25));overflow:hidden;transition:var(--transition)}
+.theme-switch__moon{transform:translateX(100%);width:100%;height:100%;background-color:var(--moon-bg);border-radius:inherit;box-shadow:0.062em 0.062em 0.062em 0em rgba(254,255,239,0.61) inset,0em -0.062em 0.062em 0em #969696 inset;transition:var(--transition);position:relative}
+.theme-switch__spot{position:absolute;top:0.75em;left:0.312em;width:0.75em;height:0.75em;border-radius:var(--container-radius);background-color:var(--spot-color);box-shadow:0em 0.0312em 0.062em rgba(0,0,0,0.25) inset}
+.theme-switch__spot:nth-of-type(2){width:0.375em;height:0.375em;top:0.937em;left:1.375em}
+.theme-switch__spot:nth-last-of-type(3){width:0.25em;height:0.25em;top:0.312em;left:0.812em}
+.theme-switch__clouds{width:1.25em;height:1.25em;background-color:var(--clouds-color);border-radius:var(--container-radius);position:absolute;bottom:-0.625em;left:0.312em;box-shadow:0.937em 0.312em var(--clouds-color),-0.312em -0.312em var(--back-clouds-color),1.437em 0.375em var(--clouds-color),0.5em -0.125em var(--back-clouds-color),2.187em 0 var(--clouds-color),1.25em -0.062em var(--back-clouds-color),2.937em 0.312em var(--clouds-color),2em -0.312em var(--back-clouds-color),3.625em -0.062em var(--clouds-color),2.625em 0em var(--back-clouds-color),4.5em -0.312em var(--clouds-color),3.375em -0.437em var(--back-clouds-color),4.625em -1.75em 0 0.437em var(--clouds-color),4em -0.625em var(--back-clouds-color),4.125em -2.125em 0 0.437em var(--back-clouds-color);transition:0.5s cubic-bezier(0,-0.02,0.4,1.25)}
+.theme-switch__stars-container{position:absolute;color:var(--stars-color);top:-100%;left:0.312em;width:2.75em;height:auto;transition:var(--transition)}
+.theme-switch__checkbox:checked + .theme-switch__container{background-color:var(--container-night-bg)}
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container{left:calc(100% - var(--circle-container-offset) - var(--circle-container-diameter))}
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover{left:calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em)}
+.theme-switch__circle-container:hover{left:calc(var(--circle-container-offset) + 0.187em)}
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon{transform:translate(0)}
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds{bottom:-4.062em}
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container{top:50%;transform:translateY(-50%)}
+.top .theme-switch{--toggle-size:10px}
+#loadbox{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 0 14px}#loadbox[hidden]{display:none}#ldsub{color:var(--mut);font-size:.85rem}
+.ld-card{--bg-color:#111;background-color:var(--bg-color);padding:1rem 2rem;border-radius:1.25rem}
+.loader{color:rgb(124,124,124);font-family:"Poppins",sans-serif;font-weight:500;font-size:25px;box-sizing:content-box;height:40px;padding:10px 10px;display:flex;border-radius:8px}
+.loader p{margin:0}
+.words{overflow:hidden;position:relative}
+.words::after{content:"";position:absolute;inset:0;background:linear-gradient(var(--bg-color) 10%,transparent 30%,transparent 70%,var(--bg-color) 90%);z-index:20}
+.word{display:block;height:100%;padding-left:6px;color:#956afa;animation:spin_4991 4s infinite}
+@keyframes spin_4991{10%{transform:translateY(-102%)}25%{transform:translateY(-100%)}35%{transform:translateY(-202%)}50%{transform:translateY(-200%)}60%{transform:translateY(-302%)}75%{transform:translateY(-300%)}85%{transform:translateY(-402%)}100%{transform:translateY(-400%)}}
+</style>
+<style>
+.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--page) 82%,transparent);backdrop-filter:blur(12px)}
+button,label.b{border-radius:999px;transition:border-color .15s,transform .1s}button:hover:not(:disabled){border-color:var(--ink)}button:active{transform:scale(.98)}
+@media (pointer:coarse){button,label.b,input:not([type=checkbox]),select{min-height:44px}}
+#txt{resize:none;overflow:hidden}#stats{color:var(--mut);font-size:.82rem;margin-top:4px}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);overflow:auto;z-index:8;margin:0;border:0;border-left:1px solid var(--bd);box-shadow:-8px 0 30px #0006;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(14px);animation:slidein .2s}
+#hist{right:auto;left:0;border-left:0;border-right:1px solid var(--bd);box-shadow:8px 0 30px #0006}
+@keyframes slidein{from{transform:translateY(12px);opacity:0}}
+#toasts{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;flex-direction:column;gap:8px;width:min(480px,92vw)}
+.toast{background:var(--fg);color:var(--bg);padding:10px 14px;border-radius:10px;box-shadow:0 6px 24px #0006}.toast.err{background:var(--t);color:#fff}
+#prev{display:grid;gap:8px}#prev img{width:100%;max-height:300px;object-fit:contain;border:1px solid var(--bd);background:var(--bg)}
+.layout.stack{grid-template-columns:1fr}input[type=range]{padding:0}
+@media print{.top,#edit,#loadbox,.row,#toasts,.drawer{display:none!important}:root[data-theme]{--bg:#fff;--page:#fff;--fg:#000;--mut:#444;--bd:#bbb}}
+</style>
+<style>
+/* gooey blob buttons (compiled from the SCSS) */
+.blob-btn{--bfg:#0505A9;--bbg:#fff;--bblob:#0505A9;--bhov:#fff}
+.blob-btn.p{--bfg:#fff;--bbg:#0505A9;--bblob:#fff;--bhov:#0505A9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .blob-btn{--bfg:var(--ink);--bbg:var(--page);--bblob:var(--ink);--bhov:var(--inkfg)}
+:root:not([data-theme="light"]) .blob-btn.p{--bfg:var(--inkfg);--bbg:var(--ink);--bblob:var(--page);--bhov:var(--ink)}}
+:root[data-theme="dark"] .blob-btn{--bfg:var(--ink);--bbg:var(--page);--bblob:var(--ink);--bhov:var(--inkfg)}
+:root[data-theme="dark"] .blob-btn.p{--bfg:var(--inkfg);--bbg:var(--ink);--bblob:var(--page);--bhov:var(--ink)}
+button.blob-btn,label.b.blob-btn{z-index:1;position:relative;padding:10px 22px;text-align:center;text-transform:uppercase;letter-spacing:.04em;color:var(--bfg);font-size:.8rem;font-weight:700;line-height:1.2;text-decoration:none;background:transparent;outline:none;border:none;transition:color .5s;cursor:pointer;border-radius:30px;min-height:0}
+button.blob-btn:before,label.b.blob-btn:before{content:"";z-index:1;position:absolute;left:0;top:0;width:100%;height:100%;border:2px solid var(--bfg);border-radius:30px}
+button.blob-btn:after,label.b.blob-btn:after{content:"";z-index:-2;position:absolute;left:3px;top:3px;width:100%;height:100%;transition:all .3s .2s;border-radius:30px}
+button.blob-btn:hover:not(:disabled),label.b.blob-btn:hover{color:var(--bhov)}
+button.blob-btn:hover:after,label.b.blob-btn:hover:after{transition:all .3s;left:0;top:0}
+button.blob-btn:disabled{opacity:.5;pointer-events:none}
+.blob-btn__inner{z-index:-1;overflow:hidden;position:absolute;left:0;top:0;width:100%;height:100%;border-radius:30px;background:var(--bbg)}
+.blob-btn__blobs{position:relative;display:block;height:100%;filter:url('#goo')}
+.blob-btn__blob{position:absolute;top:2px;width:25%;height:100%;background:var(--bblob);border-radius:100%;transform:translate3d(0,150%,0) scale(1.4);transition:transform .45s}
+.blob-btn__blob:nth-child(1){left:0;transition-delay:0s}.blob-btn__blob:nth-child(2){left:30%;transition-delay:.08s}
+.blob-btn__blob:nth-child(3){left:60%;transition-delay:.16s}.blob-btn__blob:nth-child(4){left:90%;transition-delay:.24s}
+.blob-btn:hover .blob-btn__blob{transform:translateZ(0) scale(1.4)}
+.tabs{gap:8px}
+@media (pointer:coarse){button.blob-btn{min-height:44px}}
+/* typewriter */
+.typewriter{display:flex;justify-content:center;margin:0 0 14px}
+.typewriter h1{color:var(--fg);font-family:monospace;font-size:clamp(.8rem,3.6vw,1.6rem);font-weight:600;overflow:hidden;border-right:.15em solid orange;white-space:nowrap;margin:0 auto;letter-spacing:.15em;max-width:100%;width:calc(var(--n)*(1ch + .15em));animation:typing 3.5s steps(var(--n),end),blink-caret .5s step-end infinite}
+@keyframes typing{from{width:0}to{width:calc(var(--n)*(1ch + .15em))}}
+@keyframes blink-caret{from,to{border-color:transparent}50%{border-color:orange}}
+@media (prefers-reduced-motion:reduce){.typewriter h1{animation:none}}
+/* no browser tap/click highlight */
+*,*:before,*:after{-webkit-tap-highlight-color:transparent}
+button,label,mark,.theme-switch{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+button:focus,label:focus,select:focus,input:focus,textarea:focus{outline:none}
+button:focus:not(:focus-visible){outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--ink)}
+::selection{background:color-mix(in srgb,var(--ink) 30%,transparent)}
+#zoom{position:fixed;inset:0;background:#000e;z-index:30;overflow:auto;padding:8px}#zoom[hidden]{display:none}#zimg{width:220%;max-width:none;display:block}
+@media(min-width:900px){#zimg{width:100%}}#prev img{cursor:zoom-in}
+#ulist button.blob-btn{text-transform:none;letter-spacing:0;font-weight:600;max-width:100%}
+#tw{white-space:pre-wrap;word-break:break-word;font:17px/1.7 Georgia,"Times New Roman",serif;color:var(--fg);padding:8px 10px;border:1px solid var(--ink);border-radius:2px;background:var(--page);min-height:260px;cursor:pointer}
+#tw[hidden]{display:none}
+.caret{display:inline-block;height:1.1em;vertical-align:text-bottom;margin-left:1px;border-right:.15em solid orange;animation:blink-caret .5s step-end infinite}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="position:absolute;width:0;height:0" aria-hidden="true"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix><feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend></filter></defs></svg>
+<div class="top"><b>Writing Review</b><div style="display:flex;align-items:center;gap:14px"><button class="link" id="histbtn">History</button><button class="link" id="setbtn">Settings</button><label class="theme-switch"><input type="checkbox" class="theme-switch__checkbox" id="themeTg"><div class="theme-switch__container"><div class="theme-switch__clouds"></div><div class="theme-switch__stars-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path></svg></div><div class="theme-switch__circle-container"><div class="theme-switch__sun-moon-container"><div class="theme-switch__moon"><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div></div></div></div></div></label></div></div>
+<main>
+<section class="panel drawer" id="settings" hidden>
+<div class="row" style="justify-content:space-between;align-items:center;margin:0 0 10px"><h2 style="margin:0">Settings</h2><button id="setx">Close</button></div><h2>AI provider</h2>
+<div class="two">
+<div><label class="f">Provider</label><select id="prov"><option value="gemini">Google Gemini (free)</option><option value="groq">Groq (free)</option><option value="custom">Other (OpenAI-compatible)</option></select></div>
+<div><label class="f">Model</label><input id="model" list="models"><datalist id="models"><option value="gemini-2.5-flash"><option value="gemini-2.5-flash-lite"><option value="gemini-2.5-pro"><option value="gemini-1.5-pro"></datalist></div>
+<div><label class="f">API key</label><input id="key" type="password" autocomplete="off"></div>
+<div id="urlbox" hidden><label class="f">Base URL</label><input id="url" placeholder="https://openrouter.ai/api/v1"></div>
+</div>
+<p style="color:var(--mut);font-size:.85rem;margin:10px 0 0" id="getkey"></p>
+<p style="color:var(--mut);font-size:.85rem;margin:2px 0 0">The key is saved only in this browser and sent only to your chosen provider. For handwriting, Gemini gives the most accurate reading.</p>
+<div class="row"><label style="display:flex;gap:6px;align-items:center;font-size:.9rem"><input type="checkbox" id="remember" style="width:auto"> Remember key on this device</label><button id="rmkey">Remove saved key</button></div>
+<h2 style="margin-top:18px">Handwriting reading</h2>
+<label class="f">Reading model (optional, leave empty to use the model above)</label><input id="rmodel" list="models" placeholder="e.g. gemini-2.5-pro for very hard handwriting">
+<label class="f">Accuracy</label><select id="acc"><option value="high">High: read, then proofread against the photo (slower)</option><option value="std">Standard: one reading pass</option></select>
+<label style="display:flex;gap:6px;align-items:center;font-size:.9rem;margin-top:8px"><input type="checkbox" id="enh" style="width:auto"> Improve photo contrast before reading</label>
+<h2 style="margin-top:18px">Review options</h2>
+<label class="f">Reviewer style</label><select id="persona"><option value="std">Standard teacher</option><option value="acad">Strict academic editor</option><option value="ielts">IELTS / TOEFL examiner</option><option value="creative">Creative writing coach</option><option value="learner">Beginner-friendly (very simple words)</option></select>
+<label class="f">Focus</label><select id="focus"><option value="all">Everything</option><option value="gm">Grammar, mechanics and spelling only</option><option value="st">Structure, clarity and word choice only</option></select>
+<div class="two"><div><label class="f">Temperature: <span id="tv"></span></label><input id="temp" type="range" min="0" max="1" step="0.1" value="0.2"></div>
+<div><label class="f">Max output tokens</label><input id="maxtok" type="number" min="1024" max="65536" step="1024" value="8192"></div></div>
+<label class="f">Extra instructions for the reviewer (optional)</label><textarea id="sysp" style="min-height:80px;font:14px/1.5 system-ui,sans-serif" placeholder="Example: This is a 150-word paragraph. Be strict about run-on sentences."></textarea>
+<p style="color:var(--mut);font-size:.85rem;margin:6px 0 0">The reviewer only marks and explains mistakes; it never rewrites your text. Reading handwriting always uses temperature 0.</p>
+</section>
+<section class="panel drawer" id="hist" hidden><div class="row" style="justify-content:space-between;align-items:center;margin:0 0 10px"><h2 style="margin:0">History</h2><div><button id="histclr">Clear all</button> <button id="histx">Close</button></div></div><div id="hlist"></div></section>
+
+<section class="panel" id="edit">
+<div class="typewriter"><h1 style="--n:32">Type, paste or scan your writing</h1></div>
+<div class="two">
+<div><h2>Text</h2><textarea id="txt" spellcheck="false" placeholder="Type or paste your writing, or scan handwritten notes."></textarea><div id="tw" hidden></div><div id="stats"></div></div>
+<div id="photoBox" hidden><h2>Photos</h2><div id="prev"></div></div>
+</div>
+<div class="row">
+<button id="cam">Scan with camera</button>
+<label class="b">Upload image<input id="photo" type="file" accept="image/*" multiple hidden></label>
+<input id="shot" type="file" accept="image/*" capture="environment" hidden>
+<button id="reread" hidden>Read photo again</button><button id="rot" hidden>Rotate photo</button>
+<button id="copyt">Copy text</button>
+<button id="clear">Clear</button>
+<button class="p" id="check">Review writing</button>
+</div>
+<div id="unclear" hidden><h2 style="margin-top:14px">Words to check against the photo</h2><div class="row" id="ulist"></div></div>
+</section>
+<div id="status"></div><div id="toasts"></div><div id="zoom" hidden><img id="zimg" alt="Photo, enlarged"></div>
+<div id="loadbox" hidden><div class="ld-card"><div class="loader"><p id="ldlead">Reading</p><div class="words"><span class="word"></span><span class="word"></span><span class="word"></span><span class="word"></span><span class="word"></span></div></div></div><div id="ldsub"></div></div>
+
+<div id="cammodal" hidden><video id="vid" autoplay playsinline muted></video>
+<div>Hold the phone flat, in good light, so every line is sharp.</div>
+<div class="row"><button class="p" id="snap">Take photo</button><button id="camx">Cancel</button></div></div>
+
+<div id="result" hidden>
+<div class="panel"><h2>Summary</h2><div id="sum"></div><div class="row"><button id="back">Edit text</button><button id="lay">Side by side / stacked</button><button id="xcopy">Copy report</button><button id="xmd">Markdown</button><button id="xjson">JSON</button><button id="xpdf">PDF</button></div></div>
+<div class="panel"><h2>Main problems in this writing</h2><div id="main"></div></div>
+<div class="layout">
+<div class="panel"><h2>Your writing</h2><div id="out"></div></div>
+<div><div class="tabs" id="tabs"></div><div id="list"></div></div>
+</div></div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const LABEL={grammar:"Grammar",mechanics:"Mechanics",spelling:"Spelling",style:"Word choice",teacher:"Teacher note"};
+const P={gemini:{model:"gemini-2.5-flash",link:'Free key: <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>'},
+groq:{model:"meta-llama/llama-4-scout-17b-16e-instruct",link:'Free key: <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a>'},
+custom:{model:"",link:'For example <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">OpenRouter</a>. Choose a model that can read images.'}};
+let imgData=null,teacher=[],issues=[],curText="",busy=false,filter="all";
+const load=k=>{try{return localStorage.getItem(k)||""}catch(e){return ""}};
+const save=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function toast(m,k){const t=el("div","toast "+(k||""),m);$("toasts").append(t);setTimeout(()=>t.remove(),k==="err"?7000:3000)}
+function status(t,err){if(err&&t){toast(t,"err");t=""}$("status").textContent=t||"";$("status").className=""}
+function setProv(p){$("prov").value=p;$("getkey").innerHTML=P[p].link;$("urlbox").hidden=p!=="custom";
+  $("model").value=load("wc_model_"+p)||P[p].model;$("key").value=load("wc_key_"+p)||(()=>{try{return sessionStorage.getItem("wc_key_"+p)||""}catch(e){return ""}})();$("url").value=load("wc_url")}
+setProv(load("wc_prov")||"gemini");
+$("prov").onchange=()=>{save("wc_prov",$("prov").value);setProv($("prov").value)};
+["model","key","url"].forEach(i=>$(i).onchange=()=>{const p=$("prov").value;i==="url"?save("wc_url",$("url").value):save("wc_"+i+"_"+p,$(i).value.trim())});
+const root=document.documentElement,tg=$("themeTg");
+function setTheme(d){root.dataset.theme=d?"dark":"light";tg.checked=d;save("wc_theme",d?"dark":"light")}
+setTheme(load("wc_theme")?load("wc_theme")==="dark":true);
+tg.onchange=()=>setTheme(tg.checked);
+function loader(show,lead,words,sub){const b=$("loadbox");b.hidden=!show;if(!show)return;status("");
+  $("ldlead").textContent=lead;const w=document.querySelectorAll("#loadbox .word");
+  words.concat(words[0]).forEach((t,i)=>w[i].textContent=t);$("ldsub").textContent=sub||""}
+/* settings, persona, key handling */
+const PERSONAS={std:"",acad:"Mark like a strict academic editor: expect precise, formal writing.",ielts:"Mark like an IELTS or TOEFL examiner: judge grammatical range and accuracy, coherence and vocabulary.",creative:"Mark like a creative writing coach: also flag flat, repetitive or vague wording, but only mark it, never rewrite.",learner:"The writer is a beginner: explain every point in very simple words."};
+function extra(){const f=$("focus").value,x=$("sysp").value.trim(),pe=PERSONAS[$("persona").value];
+  return (pe?"\n"+pe:"")+(f==="gm"?"\nFocus: mark only grammar, mechanics and spelling mistakes; do not mark style.":f==="st"?"\nFocus: mark only sentence structure, clarity, word choice and organisation; do not mark grammar or spelling.":"")+(x?"\nExtra instructions from the user (still never correct or rewrite the text): "+x:"")}
+[["temp","wc_temp"],["maxtok","wc_maxtok"],["focus","wc_focus"],["persona","wc_persona"],["sysp","wc_sysp"],["rmodel","wc_rmodel"],["acc","wc_acc"]].forEach(([i,k])=>{$(i).value=load(k)||$(i).value;$(i).onchange=()=>save(k,$(i).value)});
+$("tv").textContent=$("temp").value;$("temp").oninput=()=>{$("tv").textContent=$("temp").value};
+$("remember").checked=load("wc_rem")!=="0";$("remember").onchange=()=>save("wc_rem",$("remember").checked?"1":"0");
+$("key").onchange=()=>{const k="wc_key_"+$("prov").value,v=$("key").value.trim();try{if($("remember").checked){localStorage.setItem(k,v);sessionStorage.removeItem(k)}else{sessionStorage.setItem(k,v);localStorage.removeItem(k)}}catch(e){}};
+$("rmkey").onclick=()=>{const k="wc_key_"+$("prov").value;try{localStorage.removeItem(k);sessionStorage.removeItem(k)}catch(e){}$("key").value="";toast("Saved key removed from this browser.")};
+$("setx").onclick=()=>{$("settings").hidden=true};
+/* text box: auto-resize, counts */
+function grow(){const t=$("txt");t.style.height="auto";t.style.height=Math.max(260,t.scrollHeight+2)+"px";
+  const v=t.value.trim(),w=v?v.split(/\s+/).length:0;$("stats").textContent=w?w+" words · "+v.length+" characters · about "+Math.max(1,Math.round(w/200))+" min read":"";uncl()}
+$("txt").addEventListener("input",grow);
+document.addEventListener("paste",e=>{const f=Array.from(e.clipboardData?e.clipboardData.files:[]).filter(x=>x.type.startsWith("image/"));if(f.length){e.preventDefault();addFiles(f)}});
+const dz=$("edit");dz.addEventListener("dragover",e=>e.preventDefault());dz.addEventListener("drop",e=>{e.preventDefault();addFiles(e.dataTransfer.files)});
+/* history + export */
+let lastR=null;
+const H=()=>{try{return JSON.parse(localStorage.getItem("wc_hist")||"[]")}catch(e){return[]}};
+const HW=h=>{try{localStorage.setItem("wc_hist",JSON.stringify(h.slice(0,30)))}catch(e){toast("History is full. Clear some old reviews.","err")}};
+function hsave(text,r){const h=H();h.unshift({t:Date.now(),text,r:{summary:r.summary,main_problems:r.main_problems,issues:(r.issues||[]).map(({quote,type,why})=>({quote,type,why}))}});HW(h)}
+function hdraw(){const l=$("hlist");l.textContent="";const h=H();if(!h.length){l.append(el("p",null,"No saved reviews yet."));return}
+  h.forEach((x,k)=>{const d=el("div","iss"),b=el("button","link",x.text.slice(0,70).replace(/\s+/g," ")+"…"),del=el("button","link","Delete");
+    b.onclick=()=>{curText=x.text;$("txt").value=x.text;grow();render(x.text,x.r);$("hist").hidden=true};
+    del.onclick=()=>{h.splice(k,1);HW(h);hdraw()};
+    d.append(el("div","tag",new Date(x.t).toLocaleString()+" · "+x.r.issues.length+" problems"),b,del);l.append(d)})}
+$("histbtn").onclick=()=>{$("hist").hidden=!$("hist").hidden;hdraw()};$("histx").onclick=()=>{$("hist").hidden=true};
+$("histclr").onclick=()=>{try{localStorage.removeItem("wc_hist")}catch(e){}hdraw()};
+function report(){const L=["# Writing Review",new Date().toLocaleString(),"",lastR.summary||"","","## Main problems"];
+  (lastR.main_problems||[]).forEach(x=>L.push("- **"+x.title+"**: "+x.explain));
+  L.push("","## All problems");issues.forEach((i,k)=>L.push((k+1)+". ["+LABEL[i.type]+"] “"+i.quote+"” — "+i.why));
+  L.push("","## Original text","",curText);return L.join("\n")}
+function dl(n,d,t){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([d],{type:t}));a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+$("xmd").onclick=()=>dl("writing-review.md",report(),"text/markdown");
+$("xjson").onclick=()=>dl("writing-review.json",JSON.stringify({date:new Date().toISOString(),text:curText,summary:lastR.summary,main_problems:lastR.main_problems,issues:issues.map(({quote,type,why})=>({quote,type,why}))},null,2),"application/json");
+$("xcopy").onclick=async()=>{try{await navigator.clipboard.writeText(report());toast("Report copied.")}catch(e){toast("Copy failed. Use the Markdown download.","err")}};
+$("xpdf").onclick=()=>window.print();
+$("lay").onclick=()=>document.querySelector(".layout").classList.toggle("stack");
+/* gooey blob buttons: wrap every button once, including ones added later */
+function blobify(b){b.classList.add("blob-btn");const i=el("span","blob-btn__inner"),w=el("span","blob-btn__blobs");
+  for(let k=0;k<4;k++)w.append(el("span","blob-btn__blob"));i.append(w);b.append(i)}
+const blobAll=()=>document.querySelectorAll("button:not(.blob-btn),label.b:not(.blob-btn)").forEach(blobify);
+blobAll();new MutationObserver(blobAll).observe(document.body,{childList:true,subtree:true});
+/* typewriter effect for text copied from a photo */
+async function typeInto(t){const ta=$("txt"),tw=$("tw");
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ta.value=t;grow();return}
+  /* write the text with the typewriter caret; tap the text to finish at once */
+  let skip=false;tw.onclick=()=>{skip=true};
+  const cur=el("span","caret"),step=Math.max(1,Math.ceil(t.length/170));
+  ta.hidden=true;tw.hidden=false;tw.style.minHeight=Math.max(260,ta.offsetHeight)+"px";
+  for(let i=0;i<t.length&&!skip;i+=step){
+    tw.textContent=t.slice(0,i+step);tw.append(cur);
+    const r=tw.getBoundingClientRect();if(r.bottom>innerHeight-20)window.scrollBy(0,r.bottom-innerHeight+60);
+    await sleep(24)}
+  tw.hidden=true;ta.hidden=false;ta.value=t;grow()}
+/* photo helpers: contrast stretch, zoom, rotate, unclear-word list */
+function enhance(c){const x=c.getContext("2d"),d=x.getImageData(0,0,c.width,c.height),a=d.data,h=new Uint32Array(256);
+  for(let i=0;i<a.length;i+=16)h[(a[i]*.3+a[i+1]*.59+a[i+2]*.11)|0]++;
+  const n=h.reduce((p,q)=>p+q,0);let lo=0,hi=255,s=0;
+  for(let i=0;i<256;i++){s+=h[i];if(s>n*.02){lo=i;break}}s=0;for(let i=255;i>=0;i--){s+=h[i];if(s>n*.02){hi=i;break}}
+  if(hi-lo<40)return;const k=255/(hi-lo);
+  for(let i=0;i<a.length;i+=4){a[i]=(a[i]-lo)*k;a[i+1]=(a[i+1]-lo)*k;a[i+2]=(a[i+2]-lo)*k}x.putImageData(d,0,0)}
+function zoom(u){$("zimg").src=u;$("zoom").hidden=false}$("zoom").onclick=()=>{$("zoom").hidden=true};
+$("rot").onclick=async()=>{const out=[];
+  for(const u of imgs)out.push(await new Promise(ok=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=im.height;c.height=im.width;
+    const x=c.getContext("2d");x.translate(c.width,0);x.rotate(Math.PI/2);x.drawImage(im,0,0);ok(c.toDataURL("image/jpeg",.92))};im.src=u}));
+  imgs=out;imgData=imgs[0];$("prev").textContent="";imgs.forEach(u=>{const t=new Image();t.src=u;t.onclick=()=>zoom(u);$("prev").append(t)});
+  toast("Rotated. Press “Read photo again”.")};
+function uncl(){const t=$("txt").value,box=$("ulist");box.textContent="";let i=-1,n=0;
+  while((i=t.indexOf("[?]",i+1))>=0){n++;const c=i,b=el("button",null,"…"+t.slice(Math.max(0,c-25),c).replace(/\s+/g," ")+"[?]"+t.slice(c+3,c+15).replace(/\s+/g," ")+"…");
+    b.onclick=()=>{const x=$("txt");x.focus();x.setSelectionRange(c,c+3);window.scrollTo({top:x.getBoundingClientRect().top+scrollY+(c/t.length)*x.offsetHeight-180,behavior:"smooth"})};box.append(b)}
+  $("unclear").hidden=!n}
+$("enh").checked=load("wc_enh")!=="0";$("enh").onchange=()=>save("wc_enh",$("enh").checked?"1":"0");
+$("setbtn").onclick=()=>{$("settings").hidden=!$("settings").hidden};
+if(!load("wc_key_"+$("prov").value))$("settings").hidden=false;
+
+const num=(id,d)=>{const v=parseFloat($(id).value);return isNaN(v)?d:v};
+function fail(r,m){const e=new Error(m||"Request failed ("+r.status+")");e.status=r.status;throw e}
+async function tf(u,o){const c=new AbortController(),t=setTimeout(()=>c.abort(),90000);
+  try{return await fetch(u,{...o,signal:c.signal})}catch(e){if(e.name==="AbortError"){const x=new Error("The request timed out. Try again.");x.status=408;throw x}throw e}finally{clearTimeout(t)}}
+async function ai(prompt,img,json,temp,mdl){
+  temp=temp==null?0:Math.min(1,Math.max(0,temp));const mt=Math.round(num("maxtok",8192));
+  const p=$("prov").value,key=$("key").value.trim(),model=mdl||$("model").value.trim();
+  if(!key){$("settings").hidden=false;throw new Error("Paste your API key in Settings first.")}
+  let res,data;
+  if(p==="gemini"){
+    const parts=[];if(img)parts.push({inline_data:{mime_type:"image/jpeg",data:img.split(",")[1]}});parts.push({text:prompt});
+    const gc={temperature:temp,maxOutputTokens:mt};if(json)gc.responseMimeType="application/json";
+    res=await tf("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(model)+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":key},body:JSON.stringify({contents:[{parts}],generationConfig:gc})});
+    data=await res.json();if(!res.ok)fail(res,data.error&&data.error.message);
+    const c=data.candidates&&data.candidates[0];if(!c||!c.content)throw new Error("The AI returned nothing (it may have blocked the image). Try again with a clearer photo.");
+    return c.content.parts.map(x=>x.text||"").join("");
+  }
+  const base=p==="groq"?"https://api.groq.com/openai/v1":($("url").value.trim()||"https://openrouter.ai/api/v1").replace(/\/$/,"");
+  const content=img?[{type:"image_url",image_url:{url:img}},{type:"text",text:prompt}]:prompt;
+  res=await tf(base+"/chat/completions",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},body:JSON.stringify({model,temperature:temp,max_tokens:mt,messages:[{role:"user",content}]})});
+  data=await res.json();if(!res.ok)fail(res,data.error&&(data.error.message||data.error));
+  return data.choices[0].message.content;
+}
+function parseJSON(t){const a=t.indexOf("{"),b=t.lastIndexOf("}");if(a<0)throw new Error("The AI did not return a usable answer. Press Review again.");return JSON.parse(t.slice(a,b+1))}
+const err=e=>{const m=String(e.message||e),c=e.status;
+  if(/Failed to fetch|Load failed|NetworkError/i.test(m))return"Could not reach the provider. Check your internet connection.";
+  if(c===401||c===403||(c===400&&/api key|api_key/i.test(m)))return"The API key was rejected. Check it in Settings and make sure it belongs to the chosen provider.";
+  if(c===429)return"Rate limit reached. Free plans allow only a few requests a minute. Wait a minute and try again.";
+  if(c===404)return"Model not found. Check the model name in Settings.";
+  if(c>=500)return"The AI provider is busy right now. Try again in a moment.";
+  if(e instanceof SyntaxError)return"The AI answer could not be read. Press Review writing again.";
+  return m};
+
+/* ---- photo to text ---- */
+let imgs=[];
+function setImage(f){return new Promise(ok=>{if(!f||!/^image\//.test(f.type)){ok();return}
+  const r=new FileReader();r.onerror=()=>{toast("Could not read that image file.","err");ok()};
+  r.onload=()=>{const im=new Image();im.onerror=()=>{toast("That image is damaged or not supported.","err");ok()};
+    im.onload=()=>{const k=Math.min(1,2200/Math.max(im.width,im.height)),c=document.createElement("canvas");
+      c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+      if($("enh").checked)enhance(c);const u=c.toDataURL("image/jpeg",.92);imgs.push(u);imgData=imgs[0];
+      const t=new Image();t.alt="Photo "+imgs.length;t.src=u;t.onclick=()=>zoom(u);$("prev").append(t);$("photoBox").hidden=false;$("reread").hidden=false;$("rot").hidden=false;ok()};
+    im.src=r.result};r.readAsDataURL(f)})}
+async function addFiles(fl){fl=Array.from(fl||[]);if(!fl.length)return;for(const f of fl)await setImage(f);if(imgs.length)readPhoto()}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function aiRetry(prompt,img,json,temp,mdl){
+  for(let a=0;;a++){try{return await ai(prompt,img,json,temp,mdl)}catch(e){
+    if(a<2&&(e.status===429||e.status===503||/quota|rate limit|overload|try again/i.test(String(e.message)))){await sleep(9000);continue}throw e}}}
+function strips(dataUrl){return new Promise(res=>{const im=new Image();im.onload=()=>{
+  const W=im.width,H=im.height,n=Math.max(1,Math.min(6,Math.round(H/(W*.3)))),ov=Math.round(H*.07),h=Math.ceil(H/n),out=[];
+  for(let i=0;i<n;i++){const y0=Math.max(0,i*h-ov),y1=Math.min(H,(i+1)*h+ov),c=document.createElement("canvas");
+    c.width=W;c.height=y1-y0;c.getContext("2d").drawImage(im,0,y0,W,y1-y0,0,0,W,y1-y0);out.push(c.toDataURL("image/jpeg",.92))}
+  res(out)};im.src=dataUrl})}
+function sim(a,b){a=a.toLowerCase().replace(/[^a-z0-9]/g,"");b=b.toLowerCase().replace(/[^a-z0-9]/g,"");
+  if(!a||!b)return 0;let p=Array.from({length:b.length+1},(_,j)=>j);
+  for(let i=1;i<=a.length;i++){const q=[i];for(let j=1;j<=b.length;j++)q[j]=Math.min(p[j]+1,q[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=q}
+  return 1-p[b.length]/Math.max(a.length,b.length)}
+const READ_PROMPT="This image is part of a photographed page of handwriting by a student. It may be tilted, dim, blurry or on ruled paper. Transcribe the student's handwriting exactly, reading carefully line by line and word by word, from the top to the bottom of the image. Do not stop early and do not skip lines. Rules: (1) The writer is an English learner who makes spelling, grammar and punctuation mistakes. Copy every mistake exactly as written. Never correct, improve, translate, summarise or complete anything. If a word is not a real English word, spell it letter by letter as written; do not swap it for the nearest correct word. (2) Keep capital letters, punctuation, apostrophes and numbers exactly as written. (3) Output one line of text per handwritten line, with a blank line where a new paragraph starts (indented first line or a gap). (4) Words crossed out or scribbled over are deleted: leave them out. (5) Ruled lines, margins, stains and printed or typed text are not handwriting: leave them out. (6) A handwritten line cut off at the top or bottom edge of this image: skip it, it appears in a neighbouring image. (7) If a word cannot be read at all, write [?]; if you are unsure of a word, write your best reading followed by [?]. (8) Writing in red, pink, purple or any ink colour different from the student's pen, and margin notes, belong to a teacher: leave them out of the transcription and list each one after a line containing only ===TEACHER=== in the form: note | the student's words it refers to. If there are none, write nothing after that line. Output only the transcription, with no introduction, no quotation marks and no markdown.";
+const PROOF_PROMPT="You are given an image of student handwriting and a DRAFT transcription of it. Compare the draft with the handwriting line by line and word by word. Fix only the places where the draft does not match what is written: wrong, missing, extra or swapped words, and skipped lines. The writer is a learner who makes spelling and grammar mistakes: keep every mistake exactly as written and never correct anything. Crossed-out words stay out. Keep teacher notes (coloured ink) in the ===TEACHER=== section in the same format. Ignore handwritten lines cut off at the image edges. Mark any word you still cannot read with [?]. Return the complete final transcription in exactly the same format as the draft, and nothing else.";
+async function readPhoto(){
+  if(busy||!imgData)return;busy=true;setBusy(true);teacher=[];
+  try{
+    let parts=[];for(const d of imgs)parts=parts.concat(await strips(d));
+    const rm=$("rmodel").value.trim()||undefined,hi=$("acc").value==="high";let lines=[];const notes=[];
+    for(let k=0;k<parts.length;k++){
+      const lab="Part "+(k+1)+" of "+parts.length,ctx=lines.filter(Boolean).join(" ").slice(-300);
+      loader(true,"Reading",["your handwriting","every line","each word","teacher notes"],lab);
+      let t=await aiRetry(READ_PROMPT+(ctx?"\nThe transcription so far ends with: “"+ctx+"”. Use this only as a hint for hard-to-read words, never to correct the writer.":""),parts[k],false,0,rm);
+      if(hi&&t.split("===TEACHER===")[0].trim()){
+        loader(true,"Proofreading",["every word","each letter","unclear words","against the photo"],lab);
+        t=await aiRetry(PROOF_PROMPT+"\n\nDRAFT:\n"+t,parts[k],false,0,rm)}
+      const seg=t.split("===TEACHER===");
+      const cur=seg[0].replace(/\r/g,"").split("\n").map(x=>x.trim());
+      while(cur.length&&!cur[0])cur.shift();while(cur.length&&!cur[cur.length-1])cur.pop();
+      const tail=lines.filter(Boolean).slice(-5);
+      while(cur.length&&(!cur[0]||tail.some(x=>sim(x,cur[0])>.72)))cur.shift();
+      lines=lines.concat(cur);
+      (seg[1]||"").split("\n").map(l=>l.trim()).filter(Boolean).forEach(l=>{const q=l.split("|"),n={note:(q[0]||"").trim(),near:(q[1]||"").trim()};
+        if(n.note&&!notes.some(x=>sim(x.note,n.note)>.8))notes.push(n)});
+    }
+    const paras=[];let cp="";
+    lines.forEach(l=>{if(!l){if(cp)paras.push(cp);cp="";return}cp=cp?(/-$/.test(cp)?cp+l:cp+" "+l):l});if(cp)paras.push(cp);
+    const text=paras.join("\n\n").trim();
+    if(!text){status("No writing was found. Take the photo again, closer and in better light.",1);return}
+    teacher=notes;loader(false);await typeInto(text);
+    const q=(text.match(/\[\?\]/g)||[]).length,w=text.split(/\s+/).length;
+    status("Text copied into the box ("+w+" words)."+(q?" "+q+" unclear spot"+(q>1?"s are":" is")+" marked [?] and listed below. ":" ")+"Compare it with the photo (tap a photo to zoom), fix any word, then press Review writing."+(teacher.length?" Teacher notes found: "+teacher.length+".":""));
+  }catch(e){status(err(e),1)}finally{busy=false;setBusy(false);loader(false)}
+}
+function setBusy(b){["check","cam","reread"].forEach(i=>$(i).disabled=b)}
+$("photo").onchange=e=>{const f=Array.from(e.target.files);e.target.value="";addFiles(f)};
+$("shot").onchange=e=>{const f=Array.from(e.target.files);e.target.value="";addFiles(f)};
+$("reread").onclick=readPhoto;
+let stream=null;
+function stopCam(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}$("cammodal").hidden=true}
+$("cam").onclick=async()=>{
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){$("shot").click();return}
+  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"},width:{ideal:2560},height:{ideal:1440}},audio:false});
+    $("vid").srcObject=stream;$("cammodal").hidden=false}
+  catch(e){$("shot").click()}};
+$("camx").onclick=stopCam;
+$("snap").onclick=()=>{const v=$("vid");if(!v.videoWidth)return;const c=document.createElement("canvas");c.width=v.videoWidth;c.height=v.videoHeight;
+  c.getContext("2d").drawImage(v,0,0);c.toBlob(b=>{stopCam();addFiles([b])},"image/jpeg",.95)};
+$("copyt").onclick=async()=>{try{await navigator.clipboard.writeText($("txt").value);status("Text copied to the clipboard.")}catch(e){$("txt").select();status("Select the text and copy it manually.",1)}};
+$("clear").onclick=()=>{$("txt").value="";imgData=null;imgs=[];teacher=[];$("prev").textContent="";$("photoBox").hidden=true;$("reread").hidden=true;$("rot").hidden=true;status("");grow()};
+$("back").onclick=()=>{$("result").hidden=true;$("edit").hidden=false;status("");grow()};
+
+/* ---- review ---- */
+$("check").onclick=async()=>{
+  if(busy)return;const text=$("txt").value.trim();
+  if(!text){status(imgData?"Press “Read photo again” to get the text first.":"Add some writing first.",1);return}
+  busy=true;setBusy(true);
+  try{
+    loader(true,"Checking",["your grammar","your spelling","punctuation","sentence structure"],"");
+    const r=parseJSON(await aiRetry('You are an English writing teacher marking a foundation-level learner. Mark the TEXT for grammar, mechanics (punctuation, capitalization, spacing, paragraphing), spelling, and clearly weak word choice or sentence structure (run-on sentences, fragments, unclear meaning). Find EVERY mistake; do not skip any, and mark each separate mistake separately. Ignore the marker [?]. Do NOT correct, rewrite or give the right version of anything: only point to the mistake and explain it. For each mistake give: quote = exact copy of the mistaken words from the text (1-6 words, must appear in the text exactly); type = grammar|mechanics|spelling|style; why = what is wrong and which rule it breaks, in simple easy English, without writing the corrected words. Also give summary = 2 short sentences about the overall level of the writing, and main_problems = the 3 to 6 biggest repeating problems of this student (title = a short name such as "Run-on sentences"; explain = what the student does wrong and the rule, in simple English, naming 1 or 2 quoted examples from the text; no corrected versions). For each teacher note below add a mistake item with type "teacher", quote = its "near" words, why = what the teacher means is wrong.\nTeacher notes: '+JSON.stringify(teacher)+'\nReply ONLY with JSON: {"summary":string,"main_problems":[{"title":string,"explain":string}],"issues":[{"quote":string,"type":string,"why":string}]}'+extra()+'\n\nTEXT:\n'+text,null,true,num('temp',.2)));
+    curText=text;render(text,r);hsave(text,r);status("");
+  }catch(e){status(err(e),1)}finally{busy=false;setBusy(false);loader(false)}
+};
+function render(text,r){lastR=r;
+  issues=(r.issues||[]).filter(i=>i&&i.quote);const used=[];
+  issues.forEach(i=>{if(!LABEL[i.type])i.type="grammar";let from=0,p;
+    while((p=text.indexOf(i.quote,from))>=0){if(!used.some(u=>p<u.e&&p+i.quote.length>u.s)){i.s=p;i.e=p+i.quote.length;used.push(i);break}from=p+1}});
+  $("sum").textContent=(issues.length+" problem"+(issues.length==1?"":"s")+" found. ")+(r.summary||"");
+  filter="all";draw();drawMain(r.main_problems||[]);$("edit").hidden=true;$("result").hidden=false;window.scrollTo(0,0)}
+function draw(){
+  const out=$("out");out.textContent="";let pos=0;const show=i=>filter==="all"||i.type===filter;
+  issues.filter(i=>i.s!=null&&show(i)).sort((a,b)=>a.s-b.s).forEach(i=>{
+    out.append(curText.slice(pos,i.s));const m=el("mark",i.type,curText.slice(i.s,i.e));
+    m.onclick=()=>{const c=$("c"+issues.indexOf(i));if(!c)return;c.scrollIntoView({behavior:"smooth",block:"center"});c.classList.add("flash");setTimeout(()=>c.classList.remove("flash"),1300)};
+    out.append(m);pos=i.e});
+  out.append(curText.slice(pos));
+  const n={};issues.forEach(i=>n[i.type]=(n[i.type]||0)+1);
+  const tabs=$("tabs");tabs.textContent="";
+  [["all","All ("+issues.length+")"]].concat(Object.keys(n).map(k=>[k,LABEL[k]+" ("+n[k]+")"])).forEach(([k,l])=>{
+    const b=el("button",filter===k?"on":"",l);b.onclick=()=>{filter=k;draw()};tabs.append(b)});
+  const list=$("list");list.textContent="";
+  if(!issues.length)list.append(el("p",null,"No problems found."));
+  issues.forEach((i,k)=>{if(!show(i))return;const c=el("div","iss "+i.type);c.id="c"+k;
+    c.append(el("div","tag",LABEL[i.type]));
+    c.append(el("div","good","“"+i.quote+"”"));
+    c.append(el("div",null,i.why||""));list.append(c)})}
+function drawMain(a){const m=$("main");m.textContent="";
+  if(!a.length){m.append(el("p",null,"No repeated problems found."));return}
+  a.forEach(x=>{const d=el("div","iss");d.append(el("div","good",x.title||""),el("div",null,x.explain||""));m.append(d)})}
+</script></body></html>
