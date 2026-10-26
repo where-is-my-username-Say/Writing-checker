@@ -2,6 +2,11 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Writing Review</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0e1116">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <style>
 :root{--bg:#eceae4;--page:#fff;--fg:#1a1a1a;--mut:#666;--bd:#d6d3ca;--ink:#1f3a5f;--inkfg:#fff;--g:#b45309;--m:#1d4ed8;--s:#7e22ce;--st:#15803d;--t:#c00000}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1116;--page:#161a22;--fg:#e8eaf0;--mut:#98a0b0;--bd:#2a303c;--ink:#8fb4ff;--inkfg:#0e1116;--g:#f0a050;--m:#7ba5ff;--s:#c49bf0;--st:#6fd08c;--t:#ff6b6b}}
@@ -129,6 +134,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 #tw{white-space:pre-wrap;word-break:break-word;font:17px/1.7 Georgia,"Times New Roman",serif;color:var(--fg);padding:8px 10px;border:1px solid var(--ink);border-radius:2px;background:var(--page);min-height:260px;cursor:pointer}
 #tw[hidden]{display:none}
 .caret{display:inline-block;height:1.1em;vertical-align:text-bottom;margin-left:1px;border-right:.15em solid orange;animation:blink-caret .5s step-end infinite}
+mark.tone{text-decoration-color:#14b8a6}mark.structure{text-decoration-color:#ec4899}.iss.tone{border-left-color:#14b8a6}.iss.structure{border-left-color:#ec4899}#chk{margin-top:8px}
+#use{color:var(--mut);font-size:.82rem;margin:0 0 8px}
+#qrm{position:fixed;inset:0;background:#000b;z-index:40;display:flex;align-items:center;padding:12px;overflow:auto}#qrm[hidden]{display:none}
+#qrc{display:block;margin:0 auto 8px;max-width:100%;image-rendering:pixelated;background:#fff}
 </style>
 </head>
 <body>
@@ -136,7 +145,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 <div class="top"><b>Writing Review</b><div style="display:flex;align-items:center;gap:14px"><button class="link" id="histbtn">History</button><button class="link" id="setbtn">Settings</button><label class="theme-switch"><input type="checkbox" class="theme-switch__checkbox" id="themeTg"><div class="theme-switch__container"><div class="theme-switch__clouds"></div><div class="theme-switch__stars-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path></svg></div><div class="theme-switch__circle-container"><div class="theme-switch__sun-moon-container"><div class="theme-switch__moon"><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div></div></div></div></div></label></div></div>
 <main>
 <section class="panel drawer" id="settings" hidden>
-<div class="row" style="justify-content:space-between;align-items:center;margin:0 0 10px"><h2 style="margin:0">Settings</h2><button id="setx">Close</button></div><h2>AI provider</h2>
+<div class="row" style="justify-content:space-between;align-items:center;margin:0 0 10px"><h2 style="margin:0">Settings</h2><button id="setx">Close</button></div><div class="row" style="margin:0 0 12px"><button id="inst">Install app</button><button id="qrbtn">Share (QR)</button></div><h2>AI provider</h2>
 <div class="two">
 <div><label class="f">Provider</label><select id="prov"><option value="gemini">Google Gemini (free)</option><option value="groq">Groq (free)</option><option value="custom">Other (OpenAI-compatible)</option></select></div>
 <div><label class="f">Model</label><input id="model" list="models"><datalist id="models"><option value="gemini-2.5-flash"><option value="gemini-2.5-flash-lite"><option value="gemini-2.5-pro"><option value="gemini-1.5-pro"></datalist></div>
@@ -146,9 +155,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 <p style="color:var(--mut);font-size:.85rem;margin:10px 0 0" id="getkey"></p>
 <p style="color:var(--mut);font-size:.85rem;margin:2px 0 0">The key is saved only in this browser and sent only to your chosen provider. For handwriting, Gemini gives the most accurate reading.</p>
 <div class="row"><label style="display:flex;gap:6px;align-items:center;font-size:.9rem"><input type="checkbox" id="remember" style="width:auto"> Remember key on this device</label><button id="rmkey">Remove saved key</button></div>
+<h2 style="margin-top:18px">Daily requests</h2>
+<div class="two"><div><label class="f">Daily limit (Gemini free)</label><input id="dlimit" type="number" min="0" max="10000" value="20"></div><div><label class="f">&nbsp;</label><button id="ureset">Reset today’s count</button></div></div>
+<p style="color:var(--mut);font-size:.85rem;margin:6px 0 0">Every check or photo reading uses requests. The app counts them and stops before you go over. 0 means no limit.</p>
 <h2 style="margin-top:18px">Handwriting reading</h2>
 <label class="f">Reading model (optional, leave empty to use the model above)</label><input id="rmodel" list="models" placeholder="e.g. gemini-2.5-pro for very hard handwriting">
-<label class="f">Accuracy</label><select id="acc"><option value="high">High: read, then proofread against the photo (slower)</option><option value="std">Standard: one reading pass</option></select>
+<label class="f">Photo reading size</label><select id="rstr"><option value="1">Fewest requests: 1 per photo</option><option value="2" selected>Balanced: 2 per photo</option><option value="3">Most careful: 3 per photo</option></select><label class="f">Accuracy</label><select id="acc"><option value="std">Standard: no extra pass</option><option value="high">High: also proofread (doubles requests)</option></select>
 <label style="display:flex;gap:6px;align-items:center;font-size:.9rem;margin-top:8px"><input type="checkbox" id="enh" style="width:auto"> Improve photo contrast before reading</label>
 <h2 style="margin-top:18px">Review options</h2>
 <label class="f">Reviewer style</label><select id="persona"><option value="std">Standard teacher</option><option value="acad">Strict academic editor</option><option value="ielts">IELTS / TOEFL examiner</option><option value="creative">Creative writing coach</option><option value="learner">Beginner-friendly (very simple words)</option></select>
@@ -162,6 +174,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 
 <section class="panel" id="edit">
 <div class="typewriter"><h1 style="--n:32">Type, paste or scan your writing</h1></div>
+<label class="f">What are you writing?</label><select id="wtype" style="margin-bottom:6px"></select><div id="use"></div>
 <div class="two">
 <div><h2>Text</h2><textarea id="txt" spellcheck="false" placeholder="Type or paste your writing, or scan handwritten notes."></textarea><div id="tw" hidden></div><div id="stats"></div></div>
 <div id="photoBox" hidden><h2>Photos</h2><div id="prev"></div></div>
@@ -178,6 +191,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 <div id="unclear" hidden><h2 style="margin-top:14px">Words to check against the photo</h2><div class="row" id="ulist"></div></div>
 </section>
 <div id="status"></div><div id="toasts"></div><div id="zoom" hidden><img id="zimg" alt="Photo, enlarged"></div>
+<div id="qrm" hidden><div class="panel" style="max-width:360px;margin:auto;width:100%"><h2>Share this app</h2><canvas id="qrc"></canvas><label class="f">Web address of the app</label><input id="qrurl" placeholder="https://"><div class="row"><button id="qrcopy">Copy link</button><button id="qrshare">Share</button><button id="qrx">Close</button></div><p id="qrnote" style="color:var(--mut);font-size:.85rem;margin:8px 0 0"></p></div></div>
 <div id="loadbox" hidden><div class="ld-card"><div class="loader"><p id="ldlead">Reading</p><div class="words"><span class="word"></span><span class="word"></span><span class="word"></span><span class="word"></span><span class="word"></span></div></div></div><div id="ldsub"></div></div>
 
 <div id="cammodal" hidden><video id="vid" autoplay playsinline muted></video>
@@ -185,7 +199,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 <div class="row"><button class="p" id="snap">Take photo</button><button id="camx">Cancel</button></div></div>
 
 <div id="result" hidden>
-<div class="panel"><h2>Summary</h2><div id="sum"></div><div class="row"><button id="back">Edit text</button><button id="lay">Side by side / stacked</button><button id="xcopy">Copy report</button><button id="xmd">Markdown</button><button id="xjson">JSON</button><button id="xpdf">PDF</button></div></div>
+<div class="panel"><h2>Summary</h2><div id="sum"></div><div id="chk"></div><div class="row"><button id="back">Edit text</button><button id="lay">Side by side / stacked</button><button id="xcopy">Copy report</button><button id="xmd">Markdown</button><button id="xjson">JSON</button><button id="xpdf">PDF</button></div></div>
 <div class="panel"><h2>Main problems in this writing</h2><div id="main"></div></div>
 <div class="layout">
 <div class="panel"><h2>Your writing</h2><div id="out"></div></div>
@@ -194,7 +208,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--ink)}
 </main>
 <script>
 const $=id=>document.getElementById(id);
-const LABEL={grammar:"Grammar",mechanics:"Mechanics",spelling:"Spelling",style:"Word choice",teacher:"Teacher note"};
+const LABEL={grammar:"Grammar",mechanics:"Mechanics",spelling:"Spelling",style:"Word choice",teacher:"Teacher note",tone:"Tone",structure:"Structure"};
 const P={gemini:{model:"gemini-2.5-flash",link:'Free key: <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>'},
 groq:{model:"meta-llama/llama-4-scout-17b-16e-instruct",link:'Free key: <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a>'},
 custom:{model:"",link:'For example <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">OpenRouter</a>. Choose a model that can read images.'}};
@@ -216,11 +230,33 @@ tg.onchange=()=>setTheme(tg.checked);
 function loader(show,lead,words,sub){const b=$("loadbox");b.hidden=!show;if(!show)return;status("");
   $("ldlead").textContent=lead;const w=document.querySelectorAll("#loadbox .word");
   words.concat(words[0]).forEach((t,i)=>w[i].textContent=t);$("ldsub").textContent=sub||""}
+/* writing types: what the reviewer should expect */
+const WT={
+general:{g:"General",n:"General writing",b:"general writing",r:["Clear main point","Logical order","Suitable tone for the reader"]},
+essay:{g:"Academic",n:"Essay",b:"an academic essay (judge the thesis, paragraph structure, linking words, formal register and support for the argument)",r:["Clear main idea or thesis","Introduction, body and conclusion","Linking words between ideas","Formal academic tone","Examples or evidence"]},
+paragraph:{g:"Academic",n:"Single paragraph",b:"one paragraph (judge the topic sentence, supporting sentences, flow and concluding sentence)",r:["Topic sentence","Supporting details","Logical order","Concluding sentence"]},
+ielts:{g:"Academic",n:"IELTS or TOEFL task",b:"an IELTS or TOEFL writing task (judge task response, coherence, vocabulary range and grammatical accuracy)",r:["Answers the whole question","Clear position","Paragraphs with clear topics","Range of vocabulary and sentences","Conclusion"]},
+report:{g:"Academic",n:"Report",b:"a formal report (judge objectivity, clear findings and formal tone)",r:["Clear purpose","Organised sections","Facts or data","Objective formal tone","Conclusion or recommendation"]},
+abstract:{g:"Academic",n:"Abstract or summary",b:"a research abstract or summary (judge concision, key points and neutral tone)",r:["Purpose","Method or approach","Main findings","Conclusion"]},
+email:{g:"Professional",n:"Email",b:"a professional email (judge subject clarity, greeting, polite and clear tone, brevity and sign-off)",r:["Greeting","Clear purpose in the first lines","Necessary details","Polite professional tone","Clear request or next step","Sign-off and name"]},
+letter:{g:"Professional",n:"Formal letter",b:"a formal letter (judge the required parts, formal register and politeness)",r:["Greeting","Reason for writing","Details","Polite formal tone","Closing phrase and name"]},
+cover:{g:"Professional",n:"Cover letter",b:"a job cover letter (judge confidence, relevance, formal tone and no exaggeration)",r:["Position named","Relevant skills or experience","Why this company","Polite call to action","Formal closing"]},
+cv:{g:"Professional",n:"CV or resume text",b:"CV or resume text (judge action verbs, consistent tense and concision)",r:["Action verbs","Consistent tense","Concise bullet points","Results or numbers"]},
+proposal:{g:"Professional",n:"Proposal",b:"a business proposal (judge persuasion, clarity and formal tone)",r:["Problem or goal","Proposed solution","Benefits","Next steps"]},
+message:{g:"Everyday",n:"Chat or text message",b:"an informal chat or text message (judge clarity and spelling; casual wording is allowed)",r:["Clear point","Understandable spelling","Friendly tone"]},
+social:{g:"Everyday",n:"Social media post",b:"a social media post (judge clarity, tone and mechanics; casual style is allowed)",r:["Clear message","Engaging opening","Suitable tone"]},
+notes:{g:"Everyday",n:"Class or meeting notes",b:"study or meeting notes (judge clarity and spelling; short note style is allowed)",r:["Key points captured","Readable and clear","Logical order"]},
+story:{g:"Creative",n:"Story",b:"a story (judge tense consistency, dialogue punctuation, clear narration and description)",r:["Beginning, middle and end","Consistent tense","Correct dialogue punctuation","Descriptive details"]},
+blog:{g:"Creative",n:"Blog or article",b:"a blog post or article (judge an engaging opening, flow and reader-friendly tone)",r:["Engaging opening","Clear sections","Friendly but correct tone","Conclusion"]},
+speech:{g:"Creative",n:"Speech",b:"a speech (judge spoken rhythm, direct address and strong opening and closing)",r:["Strong opening","Clear points","Speaks to the audience","Strong closing"]},
+product:{g:"Creative",n:"Product description",b:"a product description (judge persuasive but accurate wording and concision)",r:["Clear what it is","Key features","Benefit to the buyer","Call to action"]}};
+(()=>{const sel=$("wtype"),gs={};Object.keys(WT).forEach(k=>{const g=WT[k].g;if(!gs[g]){gs[g]=document.createElement("optgroup");gs[g].label=g;sel.append(gs[g])}
+  const o=document.createElement("option");o.value=k;o.textContent=WT[k].n;gs[g].append(o)})})();
 /* settings, persona, key handling */
 const PERSONAS={std:"",acad:"Mark like a strict academic editor: expect precise, formal writing.",ielts:"Mark like an IELTS or TOEFL examiner: judge grammatical range and accuracy, coherence and vocabulary.",creative:"Mark like a creative writing coach: also flag flat, repetitive or vague wording, but only mark it, never rewrite.",learner:"The writer is a beginner: explain every point in very simple words."};
 function extra(){const f=$("focus").value,x=$("sysp").value.trim(),pe=PERSONAS[$("persona").value];
   return (pe?"\n"+pe:"")+(f==="gm"?"\nFocus: mark only grammar, mechanics and spelling mistakes; do not mark style.":f==="st"?"\nFocus: mark only sentence structure, clarity, word choice and organisation; do not mark grammar or spelling.":"")+(x?"\nExtra instructions from the user (still never correct or rewrite the text): "+x:"")}
-[["temp","wc_temp"],["maxtok","wc_maxtok"],["focus","wc_focus"],["persona","wc_persona"],["sysp","wc_sysp"],["rmodel","wc_rmodel"],["acc","wc_acc"]].forEach(([i,k])=>{$(i).value=load(k)||$(i).value;$(i).onchange=()=>save(k,$(i).value)});
+[["temp","wc_temp"],["maxtok","wc_maxtok"],["focus","wc_focus"],["persona","wc_persona"],["sysp","wc_sysp"],["rmodel","wc_rmodel"],["acc","wc_acc"],["wtype","wc_wtype"],["dlimit","wc_dlimit"],["rstr","wc_rstr"]].forEach(([i,k])=>{$(i).value=load(k)||$(i).value;$(i).onchange=()=>save(k,$(i).value)});
 $("tv").textContent=$("temp").value;$("temp").oninput=()=>{$("tv").textContent=$("temp").value};
 $("remember").checked=load("wc_rem")!=="0";$("remember").onchange=()=>save("wc_rem",$("remember").checked?"1":"0");
 $("key").onchange=()=>{const k="wc_key_"+$("prov").value,v=$("key").value.trim();try{if($("remember").checked){localStorage.setItem(k,v);sessionStorage.removeItem(k)}else{sessionStorage.setItem(k,v);localStorage.removeItem(k)}}catch(e){}};
@@ -228,7 +264,7 @@ $("rmkey").onclick=()=>{const k="wc_key_"+$("prov").value;try{localStorage.remov
 $("setx").onclick=()=>{$("settings").hidden=true};
 /* text box: auto-resize, counts */
 function grow(){const t=$("txt");t.style.height="auto";t.style.height=Math.max(260,t.scrollHeight+2)+"px";
-  const v=t.value.trim(),w=v?v.split(/\s+/).length:0;$("stats").textContent=w?w+" words · "+v.length+" characters · about "+Math.max(1,Math.round(w/200))+" min read":"";uncl()}
+  const v=t.value.trim(),w=v?v.split(/\s+/).length:0;$("stats").textContent=w?w+" words · "+v.length+" characters · about "+Math.max(1,Math.round(w/200))+" min read":"";uncl();showUse()}
 $("txt").addEventListener("input",grow);
 document.addEventListener("paste",e=>{const f=Array.from(e.clipboardData?e.clipboardData.files:[]).filter(x=>x.type.startsWith("image/"));if(f.length){e.preventDefault();addFiles(f)}});
 const dz=$("edit");dz.addEventListener("dragover",e=>e.preventDefault());dz.addEventListener("drop",e=>{e.preventDefault();addFiles(e.dataTransfer.files)});
@@ -236,7 +272,7 @@ const dz=$("edit");dz.addEventListener("dragover",e=>e.preventDefault());dz.addE
 let lastR=null;
 const H=()=>{try{return JSON.parse(localStorage.getItem("wc_hist")||"[]")}catch(e){return[]}};
 const HW=h=>{try{localStorage.setItem("wc_hist",JSON.stringify(h.slice(0,30)))}catch(e){toast("History is full. Clear some old reviews.","err")}};
-function hsave(text,r){const h=H();h.unshift({t:Date.now(),text,r:{summary:r.summary,main_problems:r.main_problems,issues:(r.issues||[]).map(({quote,type,why})=>({quote,type,why}))}});HW(h)}
+function hsave(text,r){const h=H();h.unshift({t:Date.now(),text,r:{summary:r.summary,main_problems:r.main_problems,checklist:r.checklist,issues:(r.issues||[]).map(({quote,type,why})=>({quote,type,why}))}});HW(h)}
 function hdraw(){const l=$("hlist");l.textContent="";const h=H();if(!h.length){l.append(el("p",null,"No saved reviews yet."));return}
   h.forEach((x,k)=>{const d=el("div","iss"),b=el("button","link",x.text.slice(0,70).replace(/\s+/g," ")+"…"),del=el("button","link","Delete");
     b.onclick=()=>{curText=x.text;$("txt").value=x.text;grow();render(x.text,x.r);$("hist").hidden=true};
@@ -244,7 +280,7 @@ function hdraw(){const l=$("hlist");l.textContent="";const h=H();if(!h.length){l
     d.append(el("div","tag",new Date(x.t).toLocaleString()+" · "+x.r.issues.length+" problems"),b,del);l.append(d)})}
 $("histbtn").onclick=()=>{$("hist").hidden=!$("hist").hidden;hdraw()};$("histx").onclick=()=>{$("hist").hidden=true};
 $("histclr").onclick=()=>{try{localStorage.removeItem("wc_hist")}catch(e){}hdraw()};
-function report(){const L=["# Writing Review",new Date().toLocaleString(),"",lastR.summary||"","","## Main problems"];
+function report(){const L=["# Writing Review",new Date().toLocaleString(),"",lastR.summary||"","","## Checklist"].concat((lastR.checklist||[]).map(x=>"- "+(x.ok?"[x] ":"[ ] ")+x.item+(x.note?" - "+x.note:"")),["","## Main problems"]);
   (lastR.main_problems||[]).forEach(x=>L.push("- **"+x.title+"**: "+x.explain));
   L.push("","## All problems");issues.forEach((i,k)=>L.push((k+1)+". ["+LABEL[i.type]+"] “"+i.quote+"” — "+i.why));
   L.push("","## Original text","",curText);return L.join("\n")}
@@ -289,6 +325,55 @@ function uncl(){const t=$("txt").value,box=$("ulist");box.textContent="";let i=-
     b.onclick=()=>{const x=$("txt");x.focus();x.setSelectionRange(c,c+3);window.scrollTo({top:x.getBoundingClientRect().top+scrollY+(c/t.length)*x.offsetHeight-180,behavior:"smooth"})};box.append(b)}
   $("unclear").hidden=!n}
 $("enh").checked=load("wc_enh")!=="0";$("enh").onchange=()=>save("wc_enh",$("enh").checked?"1":"0");
+/* ---- install as an app + share by QR code ---- */
+function qrMatrix(text){
+  const data=Array.from(new TextEncoder().encode(text)),cap=[0,17,32,53,78,106],dcw=[0,19,34,55,80,108],ecn=[0,7,10,15,20,26];
+  let v=1;while(v<6&&data.length>cap[v])v++;if(v>5)return null;
+  const bits=[],put=(n,l)=>{for(let i=l-1;i>=0;i--)bits.push((n>>i)&1)};
+  put(4,4);put(data.length,8);data.forEach(b=>put(b,8));
+  const tot=dcw[v]*8;put(0,Math.min(4,tot-bits.length));while(bits.length%8)bits.push(0);
+  for(let p=0;bits.length<tot;p^=1)put(p?17:236,8);
+  const cw=[];for(let i=0;i<bits.length;i+=8)cw.push(parseInt(bits.slice(i,i+8).join(""),2));
+  const ex=[],lg=[];let x=1;for(let i=0;i<255;i++){ex[i]=x;lg[x]=i;x<<=1;if(x&256)x^=285}for(let i=255;i<512;i++)ex[i]=ex[i-255];
+  const mul=(a,b)=>a&&b?ex[lg[a]+lg[b]]:0;
+  let g=[1];for(let i=0;i<ecn[v];i++){const n=Array(g.length+1).fill(0);g.forEach((c,j)=>{n[j]^=c;n[j+1]^=mul(c,ex[i])});g=n}
+  const rs=Array(ecn[v]).fill(0);cw.forEach(b=>{const f=b^rs[0];rs.shift();rs.push(0);if(f)for(let j=0;j<rs.length;j++)rs[j]^=mul(g[j+1],f)});
+  const all=cw.concat(rs),N=17+4*v,base=Array.from({length:N},()=>Array(N).fill(null));
+  const fp=(r0,c0)=>{for(let a=-1;a<=7;a++)for(let b=-1;b<=7;b++){const y=r0+a,z=c0+b;if(y<0||z<0||y>=N||z>=N)continue;base[y][z]=a>=0&&a<=6&&b>=0&&b<=6&&(a==0||a==6||b==0||b==6||(a>=2&&a<=4&&b>=2&&b<=4))}};
+  fp(0,0);fp(N-7,0);fp(0,N-7);
+  for(let i=8;i<N-8;i++){base[6][i]=base[i][6]=i%2==0}
+  if(v>1){const c=N-7;for(let a=-2;a<=2;a++)for(let b=-2;b<=2;b++)base[c+a][c+b]=Math.max(Math.abs(a),Math.abs(b))!=1}
+  base[N-8][8]=true;
+  for(let i=0;i<9;i++){if(base[8][i]==null)base[8][i]=false;if(base[i][8]==null)base[i][8]=false}
+  for(let i=0;i<8;i++){if(base[8][N-1-i]==null)base[8][N-1-i]=false;if(base[N-1-i][8]==null)base[N-1-i][8]=false}
+  const mk=[(r,c)=>(r+c)%2==0,(r,c)=>r%2==0,(r,c)=>c%3==0,(r,c)=>(r+c)%3==0,(r,c)=>(((r/2)|0)+((c/3)|0))%2==0,(r,c)=>(r*c)%2+(r*c)%3==0,(r,c)=>((r*c)%2+(r*c)%3)%2==0,(r,c)=>((r*c)%3+(r+c)%2)%2==0];
+  const build=m=>{const q=base.map(a=>a.slice());let inc=-1,row=N-1,bi=7,by=0;
+    for(let col=N-1;col>0;col-=2){if(col==6)col--;for(;;){for(let c=0;c<2;c++)if(q[row][col-c]==null){let d=by<all.length&&((all[by]>>bi)&1)==1;if(mk[m](row,col-c))d=!d;q[row][col-c]=d;if(--bi<0){by++;bi=7}}
+      row+=inc;if(row<0||row>=N){row-=inc;inc=-inc;break}}}
+    const f=8|m;let rr=f<<10;for(let i=14;i>=10;i--)if((rr>>i)&1)rr^=0x537<<(i-10);const fb=((f<<10)|rr)^0x5412;
+    for(let i=0;i<15;i++){const d=((fb>>i)&1)==1;
+      if(i<6)q[i][8]=d;else if(i<8)q[i+1][8]=d;else q[N-15+i][8]=d;
+      if(i<8)q[8][N-i-1]=d;else if(i<9)q[8][15-i]=d;else q[8][14-i]=d}
+    q[N-8][8]=true;return q};
+  const pen=q=>{let p=0;for(let a=0;a<N;a++)for(const t of[0,1]){let run=1;for(let b=1;b<N;b++){const s=t?q[b][a]===q[b-1][a]:q[a][b]===q[a][b-1];if(s)run++;else{if(run>=5)p+=run-2;run=1}}if(run>=5)p+=run-2}
+    for(let a=0;a<N-1;a++)for(let b=0;b<N-1;b++)if(q[a][b]===q[a][b+1]&&q[a][b]===q[a+1][b]&&q[a][b]===q[a+1][b+1])p+=3;return p};
+  let best=null,bp=1e9;for(let m=0;m<8;m++){const q=build(m),p=pen(q);if(p<bp){bp=p;best=q}}return best}
+function drawQR(u){const c=$("qrc"),m=u&&qrMatrix(u);
+  $("qrnote").textContent=!u?"Open the app from its web address, or paste that address above.":!m?"This link is too long for a QR code. Copy the link instead.":(/^file:/.test(u)?"":"Each person uses their own free Gemini key. Your key is never shared.");
+  if(!m){c.hidden=true;return}c.hidden=false;const k=6,q=4,n=m.length;c.width=c.height=(n+2*q)*k;
+  const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.fillStyle="#000";m.forEach((row,y)=>row.forEach((d,z)=>{if(d)x.fillRect((z+q)*k,(y+q)*k,k,k)}))}
+const shareUrl=()=>load("wc_shareurl")||(/^https?:/.test(location.protocol)?location.origin+location.pathname:"");
+$("qrbtn").onclick=()=>{$("qrurl").value=shareUrl();drawQR($("qrurl").value.trim());$("settings").hidden=true;$("qrm").hidden=false};
+$("qrurl").oninput=()=>{const u=$("qrurl").value.trim();save("wc_shareurl",u);drawQR(u)};
+$("qrx").onclick=()=>{$("qrm").hidden=true};
+$("qrcopy").onclick=async()=>{try{await navigator.clipboard.writeText($("qrurl").value.trim());toast("Link copied.")}catch(e){$("qrurl").select()}};
+$("qrshare").onclick=async()=>{const u=$("qrurl").value.trim();if(navigator.share&&u){try{await navigator.share({title:"Writing Review",url:u})}catch(e){}}else toast("Copy the link and send it.")};
+if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register("sw.js").catch(()=>{});
+let dip=null;addEventListener("beforeinstallprompt",e=>{e.preventDefault();dip=e});
+if(matchMedia("(display-mode: standalone)").matches)$("inst").hidden=true;
+$("inst").onclick=async()=>{if(dip){dip.prompt();dip=null}else toast("To install: open the app from its web address, then use the browser menu (Install app, or Add to Home Screen on iPhone).")};
+$("ureset").onclick=()=>{try{localStorage.removeItem("wc_use")}catch(e){}showUse();toast("Today’s count reset.")};
+["rstr","acc","dlimit","prov"].forEach(i=>$(i).addEventListener("change",showUse));
 $("setbtn").onclick=()=>{$("settings").hidden=!$("settings").hidden};
 if(!load("wc_key_"+$("prov").value))$("settings").hidden=false;
 
@@ -296,18 +381,29 @@ const num=(id,d)=>{const v=parseFloat($(id).value);return isNaN(v)?d:v};
 function fail(r,m){const e=new Error(m||"Request failed ("+r.status+")");e.status=r.status;throw e}
 async function tf(u,o){const c=new AbortController(),t=setTimeout(()=>c.abort(),90000);
   try{return await fetch(u,{...o,signal:c.signal})}catch(e){if(e.name==="AbortError"){const x=new Error("The request timed out. Try again.");x.status=408;throw x}throw e}finally{clearTimeout(t)}}
-async function ai(prompt,img,json,temp,mdl){
+const PT=()=>new Date().toLocaleDateString("en-CA",{timeZone:"America/Los_Angeles"});
+function usage(){try{const u=JSON.parse(localStorage.getItem("wc_use")||"{}");return u.d===PT()?u.n:0}catch(e){return 0}}
+const dlim=()=>$("prov").value==="gemini"?Math.max(0,Math.round(num("dlimit",20))):0;
+function useAdd(){try{localStorage.setItem("wc_use",JSON.stringify({d:PT(),n:usage()+1}))}catch(e){}showUse();
+  const L=dlim();if(L&&L-usage()===3)toast("Only 3 requests left today.")}
+function gate(){const L=dlim();if(L&&usage()>=L){const e=new Error("All "+L+" Gemini requests for today are used. The limit resets around midnight Pacific time. You can still type and edit, or switch provider in Settings.");e.local=true;throw e}}
+function showUse(){const L=dlim(),w=($("txt").value.trim().match(/\S+/g)||[]).length,o=[];
+  if(L)o.push("Requests left today: "+Math.max(0,L-usage())+" of "+L);
+  if(w){const n=w<=330?1:Math.ceil(w/300)+1;o.push("this review ≈ "+n+" request"+(n>1?"s":""))}
+  if(imgs.length){const n=imgs.length*(+$("rstr").value||2)*($("acc").value==="high"?2:1);o.push("reading the photo"+(imgs.length>1?"s":"")+" ≈ "+n+" request"+(n>1?"s":""))}
+  $("use").textContent=o.join(" · ")}
+async function ai(prompt,img,json,temp,mdl,schema){
   temp=temp==null?0:Math.min(1,Math.max(0,temp));const mt=Math.round(num("maxtok",8192));
   const p=$("prov").value,key=$("key").value.trim(),model=mdl||$("model").value.trim();
   if(!key){$("settings").hidden=false;throw new Error("Paste your API key in Settings first.")}
   let res,data;
-  if(p==="gemini"){
+  if(p==="gemini"){gate();
     const parts=[];if(img)parts.push({inline_data:{mime_type:"image/jpeg",data:img.split(",")[1]}});parts.push({text:prompt});
-    const gc={temperature:temp,maxOutputTokens:mt};if(json)gc.responseMimeType="application/json";
-    res=await tf("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(model)+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":key},body:JSON.stringify({contents:[{parts}],generationConfig:gc})});
+    const gc={temperature:temp,maxOutputTokens:mt};if(json){gc.responseMimeType="application/json";if(schema)gc.responseSchema=schema}if(json&&/2\.5-flash(?!-lite)/.test(model))gc.thinkingConfig={thinkingBudget:512};
+    res=await tf("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(model)+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":key},body:JSON.stringify({contents:[{parts}],generationConfig:gc})});useAdd();
     data=await res.json();if(!res.ok)fail(res,data.error&&data.error.message);
-    const c=data.candidates&&data.candidates[0];if(!c||!c.content)throw new Error("The AI returned nothing (it may have blocked the image). Try again with a clearer photo.");
-    return c.content.parts.map(x=>x.text||"").join("");
+    const c=data.candidates&&data.candidates[0];if(c&&c.finishReason==="MAX_TOKENS"&&json){const e=new Error("The answer was cut off.");e.trunc=true;throw e}if(!c||!c.content)throw new Error("The AI returned nothing (it may have blocked the image). Try again with a clearer photo.");
+    return (c.content.parts||[]).map(x=>x.text||"").join("");
   }
   const base=p==="groq"?"https://api.groq.com/openai/v1":($("url").value.trim()||"https://openrouter.ai/api/v1").replace(/\/$/,"");
   const content=img?[{type:"image_url",image_url:{url:img}},{type:"text",text:prompt}]:prompt;
@@ -315,7 +411,10 @@ async function ai(prompt,img,json,temp,mdl){
   data=await res.json();if(!res.ok)fail(res,data.error&&(data.error.message||data.error));
   return data.choices[0].message.content;
 }
-function parseJSON(t){const a=t.indexOf("{"),b=t.lastIndexOf("}");if(a<0)throw new Error("The AI did not return a usable answer. Press Review again.");return JSON.parse(t.slice(a,b+1))}
+function parseJSON(t){const a=t.indexOf("{");if(a<0)throw new SyntaxError("no json");t=t.slice(a);
+  try{return JSON.parse(t.slice(0,t.lastIndexOf("}")+1))}catch(e){}
+  let x=t;for(let k=0;k<60;k++){const i=x.lastIndexOf("}");if(i<0)break;x=x.slice(0,i+1);for(const c of["","]}","}","]}}"])try{return JSON.parse(x+c)}catch(e){}x=x.slice(0,i)}
+  throw new SyntaxError("bad json")}
 const err=e=>{const m=String(e.message||e),c=e.status;
   if(/Failed to fetch|Load failed|NetworkError/i.test(m))return"Could not reach the provider. Check your internet connection.";
   if(c===401||c===403||(c===400&&/api key|api_key/i.test(m)))return"The API key was rejected. Check it in Settings and make sure it belongs to the chosen provider.";
@@ -332,16 +431,21 @@ function setImage(f){return new Promise(ok=>{if(!f||!/^image\//.test(f.type)){ok
   r.onload=()=>{const im=new Image();im.onerror=()=>{toast("That image is damaged or not supported.","err");ok()};
     im.onload=()=>{const k=Math.min(1,2200/Math.max(im.width,im.height)),c=document.createElement("canvas");
       c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
-      if($("enh").checked)enhance(c);const u=c.toDataURL("image/jpeg",.92);imgs.push(u);imgData=imgs[0];
+      if($("enh").checked)enhance(c);const u=c.toDataURL("image/jpeg",.92);imgs.push(u);imgData=imgs[0];showUse();
       const t=new Image();t.alt="Photo "+imgs.length;t.src=u;t.onclick=()=>zoom(u);$("prev").append(t);$("photoBox").hidden=false;$("reread").hidden=false;$("rot").hidden=false;ok()};
     im.src=r.result};r.readAsDataURL(f)})}
 async function addFiles(fl){fl=Array.from(fl||[]);if(!fl.length)return;for(const f of fl)await setImage(f);if(imgs.length)readPhoto()}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-async function aiRetry(prompt,img,json,temp,mdl){
-  for(let a=0;;a++){try{return await ai(prompt,img,json,temp,mdl)}catch(e){
-    if(a<2&&(e.status===429||e.status===503||/quota|rate limit|overload|try again/i.test(String(e.message)))){await sleep(9000);continue}throw e}}}
-function strips(dataUrl){return new Promise(res=>{const im=new Image();im.onload=()=>{
-  const W=im.width,H=im.height,n=Math.max(1,Math.min(6,Math.round(H/(W*.3)))),ov=Math.round(H*.07),h=Math.ceil(H/n),out=[];
+async function aiRetry(prompt,img,json,temp,mdl,schema){
+  const lite="gemini-2.5-flash-lite";let m=mdl,tries=0,swapped=false;
+  for(;;){
+    try{return await ai(prompt,img,json,temp,m,schema)}catch(e){
+      const msg=String(e.message),day=/per ?day|daily/i.test(msg);
+      if(e.status===429&&day&&json&&!swapped&&$("prov").value==="gemini"&&!/lite/.test(m||$("model").value)){swapped=true;m=lite;toast("The main model’s daily quota is used. Trying the lite model.");continue}
+      if(!day&&!e.local&&tries<2&&(e.status===429||e.status===503||/overload|try again/i.test(msg))){tries++;const r=msg.match(/retry in ([\d.]+)s/i);await sleep(Math.min(45,r?Math.ceil(+r[1])+1:5*tries)*1000);continue}
+      throw e}}}
+function strips(dataUrl,nn){return new Promise(res=>{const im=new Image();im.onload=()=>{
+  const W=im.width,H=im.height,n=Math.max(1,Math.min(3,nn||1)),ov=Math.round(H*.07),h=Math.ceil(H/n),out=[];
   for(let i=0;i<n;i++){const y0=Math.max(0,i*h-ov),y1=Math.min(H,(i+1)*h+ov),c=document.createElement("canvas");
     c.width=W;c.height=y1-y0;c.getContext("2d").drawImage(im,0,y0,W,y1-y0,0,0,W,y1-y0);out.push(c.toDataURL("image/jpeg",.92))}
   res(out)};im.src=dataUrl})}
@@ -354,8 +458,9 @@ const PROOF_PROMPT="You are given an image of student handwriting and a DRAFT tr
 async function readPhoto(){
   if(busy||!imgData)return;busy=true;setBusy(true);teacher=[];
   try{
-    let parts=[];for(const d of imgs)parts=parts.concat(await strips(d));
+    let parts=[];for(const d of imgs)parts=parts.concat(await strips(d,+$("rstr").value||2));
     const rm=$("rmodel").value.trim()||undefined,hi=$("acc").value==="high";let lines=[];const notes=[];
+    {const need=parts.length*(hi?2:1),L=dlim();if(L&&need>L-usage()){status("This photo needs about "+need+" requests but only "+Math.max(0,L-usage())+" are left today. Choose “Fewest requests” in Settings, or try again tomorrow.",1);return}}
     for(let k=0;k<parts.length;k++){
       const lab="Part "+(k+1)+" of "+parts.length,ctx=lines.filter(Boolean).join(" ").slice(-300);
       loader(true,"Reading",["your handwriting","every line","each word","teacher notes"],lab);
@@ -400,21 +505,70 @@ $("clear").onclick=()=>{$("txt").value="";imgData=null;imgs=[];teacher=[];$("pre
 $("back").onclick=()=>{$("result").hidden=true;$("edit").hidden=false;status("");grow()};
 
 /* ---- review ---- */
+const REVIEW_HEAD="You are an English writing teacher marking a learner's text. Mark mistakes in: grammar; mechanics (punctuation, capital letters, spacing, paragraphing); spelling; style (unclear, repeated, wordy or weak word choice); tone (wrong formality, politeness or register for the reader); structure (sentence structure such as run-ons and fragments, and missing or misplaced parts for this type of writing). Find EVERY mistake in the PART and mark each separate mistake separately. Ignore the marker [?]. Do NOT correct, rewrite or give the right version of anything: only point to the mistake and explain it. For each mistake give: quote = exact copy of the mistaken words from the PART (1 to 6 words, must appear exactly); type = one of grammar, mechanics, spelling, style, tone, structure, teacher; why = what is wrong and which rule it breaks, in simple easy English, without writing the corrected words.";
+const STR={type:"STRING"},ISS={type:"OBJECT",properties:{quote:STR,type:{type:"STRING",enum:["grammar","mechanics","spelling","style","tone","structure","teacher"]},why:STR},required:["quote","type","why"]};
+const SCH_I={type:"OBJECT",properties:{issues:{type:"ARRAY",items:ISS}},required:["issues"]};
+const SCH_S={type:"OBJECT",properties:{summary:STR,main_problems:{type:"ARRAY",items:{type:"OBJECT",properties:{title:STR,explain:STR},required:["title","explain"]}},checklist:{type:"ARRAY",items:{type:"OBJECT",properties:{item:STR,ok:{type:"BOOLEAN"},note:STR},required:["item","ok","note"]}}},required:["summary","main_problems","checklist"]};
+/* split long text into parts of about 140 words, cutting at sentence ends */
+function chunks(text,max=300){
+  const W=[],re=/\S+/g;let m;
+  while((m=re.exec(text)))W.push({s:m.index,e:m.index+m[0].length,end:/[.!?]["”')\]]*$/.test(m[0])});
+  if(W.length<=max+30)return[{s:0,e:text.length}];
+  const out=[];let i=0;
+  while(i<W.length){let j=Math.min(i+max,W.length)-1;
+    if(j<W.length-1){let k=j;while(k>i+max*.6&&!W[k].end)k--;if(W[k].end)j=k}
+    out.push({s:i?W[i].s:0,e:j>=W.length-1?text.length:W[j].e});i=j+1}
+  const lw=W.filter(w=>w.s>=out[out.length-1].s).length;if(out.length>1&&lw<40){const l=out.pop();out[out.length-1].e=l.e}
+  return out}
+function reviewPrompt(part,k,n,t){const tn=teacher.filter(x=>x.near&&part.includes(x.near));
+  return REVIEW_HEAD+"\nType of writing: "+t.b+(n>1?"\nThis is part "+(k+1)+" of "+n+" of a longer text. Mark only this PART, and do not complain about a missing introduction or conclusion unless this part should contain it.":"")+(tn.length?"\nTeacher notes in this part (also add an item with type teacher for each: quote = its near words, why = what the teacher means is wrong): "+JSON.stringify(tn):"")+extra()}
+const sumAsk=t=>"summary = 2 short sentences about the overall level and the main thing to practise; main_problems = the 3 to 6 biggest repeating problems (title = a short name like Run-on sentences; explain = what the writer does wrong and the rule, in simple English, naming 1 or 2 quoted examples; never write corrected versions); checklist = one item for each of these requirements: "+JSON.stringify(t.r)+" (item = the requirement, ok = true if the text meets it, note = at most 12 words). Never rewrite or correct the text.";
+const SCH_ALL={type:"OBJECT",properties:{...SCH_I.properties,...SCH_S.properties},required:["issues","summary","main_problems","checklist"]};
+const clean=(a,from)=>(a||[]).filter(i=>i&&i.quote).map(i=>({...i,quote:String(i.quote).trim(),from}));
+async function reviewAll(text,t){
+  const r=parseJSON(await aiRetry(reviewPrompt(text,0,1,t)+"\nAlso give: "+sumAsk(t)+"\n\nPART:\n"+text,null,true,num("temp",.2),undefined,SCH_ALL));
+  return{summary:r.summary,main_problems:r.main_problems,checklist:r.checklist||[],issues:clean(r.issues,0)}}
+async function reviewChunk(text,c,k,n,t,depth){
+  const part=text.slice(c.s,c.e);
+  try{return clean(parseJSON(await aiRetry(reviewPrompt(part,k,n,t)+"\n\nPART:\n"+part,null,true,num("temp",.2),undefined,SCH_I)).issues,c.s)}
+  catch(e){
+    const m=text.indexOf(" ",Math.floor((c.s+c.e)/2))+1;
+    if((e.trunc||e instanceof SyntaxError)&&depth<2&&m>c.s+1&&m<c.e)return[...await reviewChunk(text,{s:c.s,e:m},k,n,t,depth+1),...await reviewChunk(text,{s:m,e:c.e},k,n,t,depth+1)];
+    throw e}}
+async function summarize(text,all,t){
+  const n={};all.forEach(i=>n[i.type]=(n[i.type]||0)+1);
+  const fb={summary:all.length+" problem"+(all.length==1?"":"s")+" found.",main_problems:Object.keys(n).map(k=>({title:(LABEL[k]||k)+" ("+n[k]+")",explain:"See the marked words and the cards."})),checklist:[]};
+  try{const r=parseJSON(await aiRetry("You are an English writing teacher. Type of writing: "+t.b+"\nThe checker found these mistakes (type: words - reason):\n"+all.slice(0,70).map(i=>i.type+": “"+i.quote+"” - "+i.why).join("\n")+"\n\nGive: "+sumAsk(t)+"\n\nTEXT:\n"+text,null,true,.2,undefined,SCH_S));
+    return{summary:r.summary||fb.summary,main_problems:(r.main_problems&&r.main_problems.length)?r.main_problems:fb.main_problems,checklist:r.checklist||[]}}
+  catch(e){return fb}}
 $("check").onclick=async()=>{
   if(busy)return;const text=$("txt").value.trim();
   if(!text){status(imgData?"Press “Read photo again” to get the text first.":"Add some writing first.",1);return}
   busy=true;setBusy(true);
   try{
-    loader(true,"Checking",["your grammar","your spelling","punctuation","sentence structure"],"");
-    const r=parseJSON(await aiRetry('You are an English writing teacher marking a foundation-level learner. Mark the TEXT for grammar, mechanics (punctuation, capitalization, spacing, paragraphing), spelling, and clearly weak word choice or sentence structure (run-on sentences, fragments, unclear meaning). Find EVERY mistake; do not skip any, and mark each separate mistake separately. Ignore the marker [?]. Do NOT correct, rewrite or give the right version of anything: only point to the mistake and explain it. For each mistake give: quote = exact copy of the mistaken words from the text (1-6 words, must appear in the text exactly); type = grammar|mechanics|spelling|style; why = what is wrong and which rule it breaks, in simple easy English, without writing the corrected words. Also give summary = 2 short sentences about the overall level of the writing, and main_problems = the 3 to 6 biggest repeating problems of this student (title = a short name such as "Run-on sentences"; explain = what the student does wrong and the rule, in simple English, naming 1 or 2 quoted examples from the text; no corrected versions). For each teacher note below add a mistake item with type "teacher", quote = its "near" words, why = what the teacher means is wrong.\nTeacher notes: '+JSON.stringify(teacher)+'\nReply ONLY with JSON: {"summary":string,"main_problems":[{"title":string,"explain":string}],"issues":[{"quote":string,"type":string,"why":string}]}'+extra()+'\n\nTEXT:\n'+text,null,true,num('temp',.2)));
+    const t=WT[$("wtype").value]||WT.general,cs=chunks(text),all=[];let skipped=0;
+    {const L=dlim(),need=cs.length>1?cs.length+1:1;if(L&&need>L-usage()){status("This check needs about "+need+" requests but only "+Math.max(0,L-usage())+" are left today.",1);return}}
+    if(cs.length===1){
+      loader(true,"Checking",["your grammar","your spelling","punctuation","sentence structure"],"");
+      try{const r=await reviewAll(text,t);curText=text;render(text,r);hsave(text,r);status("");return}
+      catch(e){if(e.status||e.local)throw e}
+    }
+    for(let k=0;k<cs.length;k++){
+      loader(true,"Checking",["your grammar","your spelling","punctuation","sentence structure"],cs.length>1?"Part "+(k+1)+" of "+cs.length:"");
+      try{all.push(...await reviewChunk(text,cs[k],k,cs.length,t,0))}catch(e){if(e.status||e.local)throw e;skipped++}
+    }
+    if(skipped===cs.length)throw new Error("The AI could not check this text. Press Review writing again.");
+    loader(true,"Summing up",["your result","main problems","what to practise","the checklist"],"");
+    const r=await summarize(text,all,t);r.issues=all;
     curText=text;render(text,r);hsave(text,r);status("");
+    if(skipped)toast(skipped+" part"+(skipped>1?"s":"")+" could not be checked. Press Review writing again to retry.","err");
   }catch(e){status(err(e),1)}finally{busy=false;setBusy(false);loader(false)}
 };
 function render(text,r){lastR=r;
   issues=(r.issues||[]).filter(i=>i&&i.quote);const used=[];
-  issues.forEach(i=>{if(!LABEL[i.type])i.type="grammar";let from=0,p;
-    while((p=text.indexOf(i.quote,from))>=0){if(!used.some(u=>p<u.e&&p+i.quote.length>u.s)){i.s=p;i.e=p+i.quote.length;used.push(i);break}from=p+1}});
-  $("sum").textContent=(issues.length+" problem"+(issues.length==1?"":"s")+" found. ")+(r.summary||"");
+  issues.forEach(i=>{if(!LABEL[i.type])i.type="grammar";
+    for(const f0 of[i.from||0,0]){let from=f0,p;while((p=text.indexOf(i.quote,from))>=0){if(!used.some(u=>p<u.e&&p+i.quote.length>u.s)){i.s=p;i.e=p+i.quote.length;used.push(i);break}from=p+1}if(i.s!=null)break}});
+  const ck=$("chk");ck.textContent="";(r.checklist||[]).forEach(x=>{const d=el("div",null,(x.ok?"✓ ":"✗ ")+(x.item||"")+(x.note?" - "+x.note:""));d.style.color=x.ok?"var(--st)":"var(--t)";ck.append(d)});$("sum").textContent=(issues.length+" problem"+(issues.length==1?"":"s")+" found. ")+(r.summary||"");
   filter="all";draw();drawMain(r.main_problems||[]);$("edit").hidden=true;$("result").hidden=false;window.scrollTo(0,0)}
 function draw(){
   const out=$("out");out.textContent="";let pos=0;const show=i=>filter==="all"||i.type===filter;
@@ -436,4 +590,5 @@ function draw(){
 function drawMain(a){const m=$("main");m.textContent="";
   if(!a.length){m.append(el("p",null,"No repeated problems found."));return}
   a.forEach(x=>{const d=el("div","iss");d.append(el("div","good",x.title||""),el("div",null,x.explain||""));m.append(d)})}
+showUse();
 </script></body></html>
